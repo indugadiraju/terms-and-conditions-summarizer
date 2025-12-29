@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "T&C Watchdog",
+  "version": "0.1.0",
+  "description": "Summarizes terms and conditions and flags risky clauses.",
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Analyze Terms"
+  },
+
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "service_worker": "service_worker.js",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
